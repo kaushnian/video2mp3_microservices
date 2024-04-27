@@ -6,6 +6,8 @@ RUN apt-get update \
     && pip install --no-cache-dir --upgrade pip \
     && apt-get install -y pkg-config
 
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 COPY ./requirements.txt /app
 RUN pip install --no-cache-dir --requirement /app/requirements.txt
