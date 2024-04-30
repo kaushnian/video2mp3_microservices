@@ -5,10 +5,13 @@ import pika.spec
 
 
 def upload(f, fs, channel, access):
+    print('UPLOADING...')
     try:
         # upload file to MongoDB
         fid = fs.put(f)
+        print("FID_ID:", fid)
     except Exception as err:
+        print(err)
         return "Internal server error", 500
 
     message = {
@@ -30,7 +33,8 @@ def upload(f, fs, channel, access):
             properties=pika.BasicProperties(
                 delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE),
         )
-    except:
+    except Exception as err:
+        print(err)
         # Delete file from MongoDB
         fs.delete(fid)
         return "Internal server error", 500

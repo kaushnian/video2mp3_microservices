@@ -50,7 +50,7 @@ def upload():
         if len(request.files) > 1 or len(request.files) < 1:
             return "Exactly one file required", 400
 
-        for _, in request.files.items():
+        for _, f in request.files.items():
             err = util.upload(f, fs_videos, channel, access)
 
             if err:

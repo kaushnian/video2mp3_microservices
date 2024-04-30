@@ -25,4 +25,4 @@ spec:
         - configMapRef:
             name: notification-configmap
         - secretRef:
-            name: notification-secret
+            name: video2mp3-secrets
